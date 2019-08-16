@@ -104,7 +104,7 @@ class AudioLevelDrawer {
   }
 
   public setVolumes(volumes: Volume[]): void {
-    this._volumes = volumes
+    this._volumes = last(volumes, 1000)
   }
 
   public draw() {
@@ -113,7 +113,7 @@ class AudioLevelDrawer {
     ctx.strokeStyle = 'green'
     ctx.lineWidth = 1
 
-    last(this._volumes, 1000).forEach((volume, index) => {
+    this._volumes.forEach((volume, index) => {
       // 中心線を描画する
       ctx.beginPath()
       ctx.moveTo(index, 400 / 2)
