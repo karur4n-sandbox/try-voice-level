@@ -3,6 +3,7 @@
   "license": "ISC",
   "scripts": {
     "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
     "test": "jest"
   },
   "dependencies": {
