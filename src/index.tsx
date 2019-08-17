@@ -52,10 +52,7 @@ const App: React.FC = () => {
           2
         )
 
-        audioLevelDrawerRef.current.setVolumes([
-          ...audioLevelDrawer.volumes,
-          nextVolume,
-        ])
+        audioLevelDrawer.volumes = [...audioLevelDrawer.volumes, nextVolume]
 
         audioLevelDrawer.draw()
       }
@@ -103,8 +100,8 @@ class AudioLevelDrawer {
     return this._volumes
   }
 
-  public setVolumes(volumes: Volume[]): void {
-    this._volumes = last(volumes, 1000)
+  set volumes(val) {
+    this._volumes = last(val, 1000)
   }
 
   public draw() {
